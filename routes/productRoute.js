@@ -1,7 +1,10 @@
 import express from "express";
 import multer from "../multer.js";
 import Product from "../models/productModel.js";
-import { getAllProducts } from "../controllers/productController.js";
+import {
+  getAllProducts,
+  getProductById,
+} from "../controllers/productController.js";
 
 const router = express.Router();
 router.post("/add", multer.single("image"), async (req, res) => {
@@ -31,5 +34,6 @@ router.post("/add", multer.single("image"), async (req, res) => {
 });
 
 router.get("/", getAllProducts);
+router.get("/:id", getProductById);
 
 export default router;
