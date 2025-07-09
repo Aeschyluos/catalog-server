@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 router.post("/add", multer.single("image"), async (req, res) => {
   try {
-    const { name, brand, category, price, description } = req.body;
+    const { name, category, price, description } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ message: "Image multer failed" });
@@ -17,7 +17,6 @@ router.post("/add", multer.single("image"), async (req, res) => {
 
     const newProduct = new Product({
       name,
-      brand,
       category,
       price,
       description,
